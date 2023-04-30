@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>product upload</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/img/logo.png" rel="icon">
+  <link href="../static/img/logo.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../static/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top" style="background-color: rgba(0, 0, 0, 0.8);">
+    <div class="container d-flex align-items-center justify-content-lg-between">
+
+      <a href="{{url_for('welcome_user')}}" class="logo me-auto me-lg-0"><img src="../static/img/logo.png" alt="" class="img-fluid"></a>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{{ url_for('welcome_user') }}">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="{{ url_for('add_product') }}">Sell</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
+          <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li class="dropdown"><a href="#"><span>Electronics</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Mobiles and Tablets') }}">Mobiles and Tablets</a></li>
+                  <li><a href="{{ url_for('show_products', category='Computers and Laptops') }}">Computers and Laptops</a></li>
+                  <li><a href="{{ url_for('show_products', category='TVs, Audio and Video') }}">TVs, Audio and Video</a></li>
+                  <li><a href="{{ url_for('show_products', category='Camera and Accessories') }}">Camera and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='Video Games and Consoles') }}">Video Games and Consoles</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Home and Decor</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Furniture') }}">Furniture</a></li>
+                  <li><a href="{{ url_for('show_products', category='Appliances') }}">Appliances</a></li>
+                  <li><a href="{{ url_for('show_products', category='Home decor and Garden') }}">Home decor and Garden</a></li>
+                  <li><a href="{{ url_for('show_products', category='Tools And DIY') }}">Tools And DIY</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Babies and Kids</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Toys and Games') }}">Toys and Games</a></li>
+                  <li><a href="{{ url_for('show_products', category='Baby gear and Furniture') }}">Baby gear and Furniture</a></li>
+                  <li><a href="{{ url_for('show_products', category='Kids clothing and Accessories') }}">Kids clothing and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='ther Baby Essentials') }}">Other Baby Essentials</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Fashion and Beauty</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Clothing') }}">Clothing</a></li>
+                  <li><a href="{{ url_for('show_products', category='Shoes') }}">Shoes</a></li>
+                  <li><a href="{{ url_for('show_products', category='Watches, Jewelry and Accessories') }}">Watches, Jewelry and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='Health & Beauty Products') }}">Health & Beauty Products</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Vehicles</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Cars') }}">Cars</a></li>
+                  <li><a href="{{ url_for('show_products', category='Motorcycles and Scooters') }}">Motorcycles and Scooters</a></li>
+                  <li><a href="{{ url_for('show_products', category='Bicycles and Accessories') }}">Bicycles and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='Parts and Accessories') }}">Parts and Accessories</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Miscellaneous</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Books') }}">Books</a></li>
+                  <li><a href="{{ url_for('show_products', category='Sports and Outdoors') }}">Sports and Outdoors</a></li>
+                  <li><a href="{{ url_for('show_products', category='Camping and Hiking') }}">Camping and Hiking</a></li>
+                  <li><a href="{{ url_for('show_products', category='Musical Instruments') }}">Musical Instruments</a></li>
+                  <li><a href="{{ url_for('show_products', category='Others') }}">Others</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <!-- <li><a class="nav-link scrollto" href="#contact">Search</a></li> -->
+        <li>
+          <div class="input-group mx-3">
+            
+            <form method="POST" action="{{url_for('search_results')}}">
+            <div class="row g-0">
+            <div class="col-auto">
+            <input type="search" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2" style="font-size: 0.8rem;" name="search_query"></div>
+            <div class="col-auto"> <button class="btn btn-outline-secondary" type="submit" id="button-addon2" style="background-color: #fdc85e; font-size: 0.85rem;"><i class="bi bi-search"></i></button></div>
+          </div>  
+          </form>
+          </div>
+        </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="{{ url_for('show_profile') }}" class="get-started-btn scrollto d-flex align-items-center"><i class="bi bi-person-circle bi-lg me-2" style="font-size: 1rem !important;"></i><span style="font-weight: 600; font-size: 1rem;"> Welcome User</span></a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <div class="contfainer-fluid">
+    <div class="row" style="height: 100%;">
+      <div class="col-9" style="background-color: #e2eaef;">
+        <form method="POST" action="/add_product" enctype="multipart/form-data">
+        <div class="row text-center" style="margin-top: 100px;">
+          <div class="container-fluid">
+            <div class="col-10">
+            <h5 style="text-align: left; color: black;">Product Name :</h5>
+            <div class="input-group mb-3">
+              <input type="text" name="name" class="form-control" placeholder="Product Title here" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="row">
+            <div class="col-8">
+            <h5 style="text-align: left; color: black; margin-top: 10px;">Product Category :</h5>
+            <select class="form-select  mb-3" name="category" aria-label=".form-select-lg example">
+              <optgroup label="Electronics">
+              <option value="Mobiles and Tablets">Mobiles and Tablets</option>
+              <option value="Computers and Laptops">Computers and Laptops</option>
+              <option value="TVs, Audio and Video">TVs, Audio and Video</option>
+              <option value="Camera and Accessories">Camera and Accessories</option>
+              <option value="Video Games and Consoles">Video Games and Consoles</option>
+              </optgroup>
+              <optgroup label="Home and Decor">
+                <option value="Furniture">Furniture</option>
+                <option value="Appliances">Appliances</option>
+                <option value="Home decor and Garden">Home decor and Garden</option>
+                <option value="Tools And DIY">Tools And DIY</option>
+                </optgroup>
+                <optgroup label="Babies and Kids">
+                  <option value="Toys and Games">Toys and Games</option>
+                  <option value="Baby gear and Furniture">Baby gear and Furniture</option>
+                  <option value="Kids clothing and Accessories">Kids clothing and Accessories</option>
+                  <option value="Other Baby Essentials">Other Baby Essentials</option>
+                  </optgroup>
+                  <optgroup label="Fashion and Beauty">
+                    <option value="Clothing">Clothing</option>
+                    <option value="Shoes">Shoes</option>
+                    <option value="Health & Beauty Products">Health & Beauty Products</option>
+                    <option value="Watches, Jewelry and Accessories">Watches, Jewelry and Accessories</option>
+                    </optgroup>
+                    <optgroup label="Vehicles">
+                      <option value="Motorcycles and Scooters">Motorcycles and Scooters</option>
+                      <option value="Cars">Cars</option>
+                      <option value="Bicycles and Accessories">Bicycles and Accessories</option>
+                      <option value="Parts and Accessories">Parts and Accessories</option>
+                      </optgroup>
+                      <optgroup label="Miscellaneous">
+                        <option value="Books">Books</option>
+                        <option value="Sports and Outdoors">Sports and Outdoors</option>
+                        <option value="Camping and Hiking">Camping and Hiking</option>
+                        <option value="Musical Instruments">Musical Instruments</option>
+                        <option value="Others">Others</option>
+                        </optgroup>
+            </select>
+            </div>
+            <div class="col-4">
+              <h5 style="text-align: left; color: black; margin-top: 10px;">Price</h5>
+              <div class="input-group mb-3">
+                <span class="input-group-text">₹</span>
+                <input type="text" class="form-control" name="price" aria-label="Amount (to the nearest dollar)">
+                <span class="input-group-text">.00</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8">
+              <h5 style="text-align: left; color: black; margin-top: 10px;">Upload Product Image :</h5>
+              <!-- <div class="input-group">
+                <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" multiple="multiple">
+                <button cflass="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04"><b>+</b></button>
+              </div> -->
+              <form style="justify-content: start; align-items: start;">
+                <label for="files"><span style="text-align: left; color: black; margin-top: 10px;">Upload images :</span></label>
+                <input type="file" name="image" id="files" name="files" accept="image/png, image/jpeg, image/jpg" multiple>
+              </form>
+            </div>
+          </div>
+          <div class="input-group" style="margin-top: 30px;">
+            <span class="input-group-text">Product description</span>
+            <textarea class="form-control" name="description" aria-label="With textarea"></textarea>
+          </div>
+          <button type ="submit"  class="get-started-btn scrollto" style="color: black; font-weight: 800; margin-top: 30px;">Upload</button>
+            </div>
+          </div>
+        </div>
+        </form>
+      </div>
+      <div class="col-3 text-center" style="background-image: url(../static/img/prod-upl.jpg); background-size: cover; min-height: 100vh;">
+        <div class = "row align-items-center justify-content-center" style="background-color: rgba(0, 0, 0, 0.662); min-height: 100%;">
+          <h1 style="font-family: 'Lucida Sans'; color: #ffc451; font-size: 50px;">List Your Product</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Vendor JS Files -->
+<script src="../static/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="../static/vendor/aos/aos.js"></script>
+<script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../static/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../static/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Template Main JS File -->
+<script src="../static/js/main.js"></script>

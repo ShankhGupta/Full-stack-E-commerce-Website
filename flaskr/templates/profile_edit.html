@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OLX_Karo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- Favicons -->
+  <link href="../static/img/logo.png" rel="icon">
+  <link href="../static/img/logo.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../static/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../static/css/style.css" rel="stylesheet">
+</head>
+
+<body style="background-color: #ffffff">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top" style="background-color: rgba(0, 0, 0, 0.8);">
+    <div class="container d-flex align-items-center justify-content-lg-between">
+
+      <a href="{{url_for('welcome_user')}}" class="logo me-auto me-lg-0"><img src="../static/img/logo.png" alt="" class="img-fluid"></a>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{{ url_for('welcome_user') }}">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="{{ url_for('add_product') }}">Sell</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
+          <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li class="dropdown"><a href="#"><span>Electronics</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Mobiles and Tablets') }}">Mobiles and Tablets</a></li>
+                  <li><a href="{{ url_for('show_products', category='Computers and Laptops') }}">Computers and Laptops</a></li>
+                  <li><a href="{{ url_for('show_products', category='TVs, Audio and Video') }}">TVs, Audio and Video</a></li>
+                  <li><a href="{{ url_for('show_products', category='Camera and Accessories') }}">Camera and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='Video Games and Consoles') }}">Video Games and Consoles</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Home and Decor</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Furniture') }}">Furniture</a></li>
+                  <li><a href="{{ url_for('show_products', category='Appliances') }}">Appliances</a></li>
+                  <li><a href="{{ url_for('show_products', category='Home decor and Garden') }}">Home decor and Garden</a></li>
+                  <li><a href="{{ url_for('show_products', category='Tools And DIY') }}">Tools And DIY</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Babies and Kids</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Toys and Games') }}">Toys and Games</a></li>
+                  <li><a href="{{ url_for('show_products', category='Baby gear and Furniture') }}">Baby gear and Furniture</a></li>
+                  <li><a href="{{ url_for('show_products', category='Kids clothing and Accessories') }}">Kids clothing and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='ther Baby Essentials') }}">Other Baby Essentials</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Fashion and Beauty</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Clothing') }}">Clothing</a></li>
+                  <li><a href="{{ url_for('show_products', category='Shoes') }}">Shoes</a></li>
+                  <li><a href="{{ url_for('show_products', category='Watches, Jewelry and Accessories') }}">Watches, Jewelry and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='Health & Beauty Products') }}">Health & Beauty Products</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Vehicles</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Cars') }}">Cars</a></li>
+                  <li><a href="{{ url_for('show_products', category='Motorcycles and Scooters') }}">Motorcycles and Scooters</a></li>
+                  <li><a href="{{ url_for('show_products', category='Bicycles and Accessories') }}">Bicycles and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='Parts and Accessories') }}">Parts and Accessories</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Miscellaneous</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Books') }}">Books</a></li>
+                  <li><a href="{{ url_for('show_products', category='Sports and Outdoors') }}">Sports and Outdoors</a></li>
+                  <li><a href="{{ url_for('show_products', category='Camping and Hiking') }}">Camping and Hiking</a></li>
+                  <li><a href="{{ url_for('show_products', category='Musical Instruments') }}">Musical Instruments</a></li>
+                  <li><a href="{{ url_for('show_products', category='Others') }}">Others</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <!-- <li><a class="nav-link scrollto" href="#contact">Search</a></li> -->
+        <li>
+          <div class="input-group mx-3">
+            
+            <form method="POST" action="{{url_for('search_results')}}">
+            <div class="row g-0">
+            <div class="col-auto">
+            <input type="search" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2" style="font-size: 0.8rem;" name="search_query"></div>
+            <div class="col-auto"> <button class="btn btn-outline-secondary" type="submit" id="button-addon2" style="background-color: #fdc85e; font-size: 1.25rem;"><i class="bi bi-search"></i></button></div>
+          </div>  
+          </form>
+          </div>
+        </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="{{ url_for('show_profile') }}" class="get-started-btn scrollto d-flex align-items-center"><i class="bi bi-person-circle bi-lg me-2" style="font-size: 1rem !important;"></i><span style="font-weight: 600; font-size: 1rem;"> Welcome User</span></a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <div class="container-fluid" style="margin-top: 100px;">
+    <p style="text-align: center; font-size:300%;  color: #00585A;">User Profile</p>
+
+    <div class="container">
+      <div class="container-fluid my-5"></div>
+
+      <body>
+        <div class="row">
+          <div class="container">
+            <div class="main-body">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex flex-column align-items-center text-center">
+                          <img src="data:image/jpeg;base64, {{ img_data_b64 }}" class="w-100 h-100" width="100" height="100">
+                        
+                        <div class="mt-3"></div>
+                      </div>
+
+                      </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-8">
+                  <div class="card">
+                    <div class="card-body">
+                      <form method="POST" action="{{ url_for('edit_profile') }}">
+                      <div class="row mb-3">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">User ID:</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          <input type="text" class="form-control" value="{{ data[0]['username'] }}" readonly>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">First Name:</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          <input type="text" class="form-control" value="{{ data[0]['firstname'] }}" name="first">
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">last Name:</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          <input type="text" class="form-control" value="{{ data[0]['lastname'] }}" name="last">
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Email:</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          <input type="text" class="form-control" value="{{ data[0]['email'] }}" name="email">
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Phone:</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          <input type="text" class="form-control" value="(239) 816-9029">
+                        </div>
+                      </div>
+                      <hr>
+                      <!-- <head><p style="text-align: centre; font-size: 24px;"></p></head> -->
+                      <div class="row mb-3">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Street address:</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          <input type="text" class="form-control" value="{{ data[0]['address'] }}" name="address">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-9 text-secondary">
+                        
+                            <button type="submit" class="btn btn-warning btn-block mb-4">Save Changes </button>
+                          
+                        </div>
+                      </div>
+                    </form>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="card">
+                        <!-- <div class="card-body"> -->
+                        <!-- </div> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+
+    </script>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+
+  <!-- Vendor JS Files -->
+<script src="../static/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="../static/vendor/aos/aos.js"></script>
+<script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../static/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../static/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Template Main JS File -->
+<script src="../static/js/main.js"></script>
+
+</body>
+
+</html>

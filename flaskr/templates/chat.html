@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OLX_Karo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- Favicons -->
+  <link href="../static/img/logo.png" rel="icon">
+  <link href="../static/img/logo.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../static/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../static/css/style.css" rel="stylesheet">
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js"></script>
+
+  <style type="text/css">
+    body {
+      background-color: #f4f7f6;
+      margin-top: 20px;
+    }
+
+    .chat .chat-header {
+      padding: 15px 20px;
+      border-bottom: 2px solid #f4f7f6
+    }
+
+    .chat .chat-header img {
+      float: left;
+      border-radius: 40px;
+      width: 40px
+    }
+
+    .chat .chat-header .chat-about {
+      float: left;
+      padding-left: 10px
+    }
+
+    .chat .chat-history {
+      padding: 20px;
+      border-bottom: 2px solid #fff
+    }
+
+    .chat .chat-history ul {
+      padding: 0
+    }
+
+    .chat .chat-history ul li {
+      list-style: none;
+      margin-bottom: 30px
+    }
+
+
+
+    .chat .chat-history .message-data {
+      margin-bottom: 15px
+    }
+
+    .chat .chat-history .message-data img {
+      border-radius: 40px;
+      width: 40px
+    }
+
+    .chat .chat-history .message-data-time {
+      color: #434651;
+      padding-left: 6px
+    }
+
+    .chat .chat-history .message {
+      color: #444;
+      padding: 18px 20px;
+      line-height: 26px;
+      font-size: 16px;
+      border-radius: 7px;
+      display: inline-block;
+      position: relative
+    }
+
+    .chat .chat-history .message:after {
+      bottom: 100%;
+      left: 7%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-bottom-color: #fff;
+      border-width: 10px;
+      margin-left: -10px
+    }
+
+    .chat .chat-history .my-message {
+      background: #efefef
+    }
+
+    .chat .chat-history .my-message:after {
+      bottom: 100%;
+      left: 30px;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-bottom-color: #efefef;
+      border-width: 10px;
+      margin-left: -10px
+    }
+
+    .chat .chat-history .other-message {
+      background: #e8f1f3;
+      text-align: right
+    }
+
+    .chat .chat-history .other-message:after {
+      border-bottom-color: #e8f1f3;
+      left: 93%
+    }
+
+    .chat .chat-message {
+      padding: 20px
+    }
+
+    .online,
+    .offline,
+    .me {
+      margin-right: 2px;
+      font-size: 8px;
+      vertical-align: middle
+    }
+
+    .online {
+      color: #86c541
+    }
+
+    .offline {
+      color: #e47297
+    }
+
+    .me {
+      color: #1d8ecd
+    }
+
+    .float-right {
+      float: right
+    }
+
+    .clearfix:after {
+      visibility: hidden;
+      display: block;
+      font-size: 0;
+      content: " ";
+      clear: both;
+      height: 0
+    }
+
+    @media only screen and (max-width: 767px) {
+      .chat-app .chat {
+        margin: 0
+      }
+
+      .chat-app .chat .chat-header {
+        border-radius: 0.55rem 0.55rem 0 0
+      }
+
+      .chat-app .chat-history {
+        height: 300px;
+        overflow-x: auto
+      }
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 992px) {
+      .chat-app .chat-list {
+        height: 650px;
+        overflow-x: auto
+      }
+
+      .chat-app .chat-history {
+        height: 600px;
+        overflow-x: auto
+      }
+    }
+
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+      .chat-app .chat-list {
+        height: 480px;
+        overflow-x: auto
+      }
+
+      .chat-app .chat-history {
+        height: calc(100vh - 350px);
+        overflow-x: auto
+      }
+    }
+  </style>
+</head>
+
+<body style="background-color: #ffffff">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+
+
+
+  <!-- =================== SOCKET IO  ===================== -->
+  <!-- <script type="text/javascript">
+    $(document).ready(function() {
+      var socket = io.connect("http://localhost:5000")
+      socket.on('connect', function() {
+      });
+
+      socket.on('message', function(data) {
+        $('#message_right').append($('<p>').text(data));
+      });
+
+      $('#sendBtn').on('click', function() {
+        socket.send($('#message').val());
+        $('#message').val('');
+      });
+    }) -->
+  <!-- </script> -->
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top" style="background-color: rgba(0, 0, 0, 0.8);">
+    <div class="container d-flex align-items-center justify-content-lg-between">
+
+      <a href="{{url_for('welcome_user')}}" class="logo me-auto me-lg-0"><img src="../static/img/logo.png" alt=""
+          class="img-fluid"></a>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{{ url_for('welcome_user') }}">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="{{ url_for('add_product') }}">Sell</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
+          <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li class="dropdown"><a href="#"><span>Electronics</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Mobiles and Tablets') }}">Mobiles and Tablets</a>
+                  </li>
+                  <li><a href="{{ url_for('show_products', category='Computers and Laptops') }}">Computers and
+                      Laptops</a></li>
+                  <li><a href="{{ url_for('show_products', category='TVs, Audio and Video') }}">TVs, Audio and Video</a>
+                  </li>
+                  <li><a href="{{ url_for('show_products', category='Camera and Accessories') }}">Camera and
+                      Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='Video Games and Consoles') }}">Video Games and
+                      Consoles</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Home and Decor</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Furniture') }}">Furniture</a></li>
+                  <li><a href="{{ url_for('show_products', category='Appliances') }}">Appliances</a></li>
+                  <li><a href="{{ url_for('show_products', category='Home decor and Garden') }}">Home decor and
+                      Garden</a></li>
+                  <li><a href="{{ url_for('show_products', category='Tools And DIY') }}">Tools And DIY</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Babies and Kids</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Toys and Games') }}">Toys and Games</a></li>
+                  <li><a href="{{ url_for('show_products', category='Baby gear and Furniture') }}">Baby gear and
+                      Furniture</a></li>
+                  <li><a href="{{ url_for('show_products', category='Kids clothing and Accessories') }}">Kids clothing
+                      and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='ther Baby Essentials') }}">Other Baby
+                      Essentials</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Fashion and Beauty</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Clothing') }}">Clothing</a></li>
+                  <li><a href="{{ url_for('show_products', category='Shoes') }}">Shoes</a></li>
+                  <li><a href="{{ url_for('show_products', category='Watches, Jewelry and Accessories') }}">Watches,
+                      Jewelry and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='Health & Beauty Products') }}">Health & Beauty
+                      Products</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Vehicles</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Cars') }}">Cars</a></li>
+                  <li><a href="{{ url_for('show_products', category='Motorcycles and Scooters') }}">Motorcycles and
+                      Scooters</a></li>
+                  <li><a href="{{ url_for('show_products', category='Bicycles and Accessories') }}">Bicycles and
+                      Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='Parts and Accessories') }}">Parts and
+                      Accessories</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Miscellaneous</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Books') }}">Books</a></li>
+                  <li><a href="{{ url_for('show_products', category='Sports and Outdoors') }}">Sports and Outdoors</a>
+                  </li>
+                  <li><a href="{{ url_for('show_products', category='Camping and Hiking') }}">Camping and Hiking</a>
+                  </li>
+                  <li><a href="{{ url_for('show_products', category='Musical Instruments') }}">Musical Instruments</a>
+                  </li>
+                  <li><a href="{{ url_for('show_products', category='Others') }}">Others</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <!-- <li><a class="nav-link scrollto" href="#contact">Search</a></li> -->
+          <li>
+            <div class="input-group mx-3">
+
+              <form method="POST" action="{{url_for('search_results')}}">
+                <div class="row g-0">
+                  <div class="col-auto">
+                    <input type="search" class="form-control" placeholder="Search" aria-label="Recipient's username"
+                      aria-describedby="button-addon2" style="font-size: 0.8rem;" name="search_query">
+                  </div>
+                  <div class="col-auto"> <button class="btn btn-outline-secondary" type="submit" id="button-addon2"
+                      style="background-color: #fdc85e; font-size: 1.25rem;"><i class="bi bi-search"></i></button></div>
+                </div>
+              </form>
+            </div>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="{{ url_for('show_profile') }}" class="get-started-btn scrollto d-flex align-items-center"><i
+          class="bi bi-person-circle bi-lg me-2" style="font-size: 1rem !important;"></i><span
+          style="font-weight: 600; font-size: 1rem;"> Welcome User</span></a>
+
+    </div>
+  </header><!-- End Header -->
+  <div class="container-fluid" style="margin-top: 100px;">
+
+
+    <div class="chat">
+      <div class="chat-header clearfix">
+        <div class="row">
+          <div class="col-lg-6">
+
+            <img src="data:image/jpeg;base64, {{ img_data_b64 }}">
+
+            <div class="chat-about">
+              <h6 class="m-b-0">{{ user_id2 }}</h6>
+            </div>
+          </div>
+          <div class="col-lg-6 hidden-sm text-right">
+          </div>
+        </div>
+      </div>
+      <div class="chat-history">
+        <ul class="m-b-0">
+          <li class="clearfix">
+
+
+            <ul>
+              {% for chat in report %}
+              {% if chat['sender_id'] == user_id %}
+              <li class="clearfix">
+                <div class="message other-message float-right" id="message_right"> {{ chat['message'] }} </div>
+              </li>
+              {% else %}
+              <li class="clearfix">
+                <div class="message other-message float-left" id="message_left"> {{ chat['message'] }} </div>
+              </li>
+              {% endif %}
+              {% endfor %}
+            </ul>
+
+      </div>
+      <form method="POST" action="{{ url_for('handle_message', user_id2 = user_id2) }}">
+        <div class="chat-message clearfix" style="bottom: 0px; position: fixed; width: 100%;">
+          <div class="input-group mb-0">
+            <div class="input-group-prepend">
+              <!-- <span class="input-group-text"><img src="/../static/img/send-fill.svg" type="button" id="sendBtn"></span> -->
+              <button id="sendBtn" class="btn btn-warning">Send</button>
+            </div>
+            <input type="text" class="form-control" placeholder="Enter text here..." id="message" name="message">
+          </div>
+        </div>
+      </form>
+  </div>
+  </div>
+
+  <!-- Vendor JS Files -->
+  <script src="../static/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../static/vendor/aos/aos.js"></script>
+  <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../static/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../static/js/main.js"></script>
+</body>
+
+</html>

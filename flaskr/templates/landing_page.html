@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>OLX_Karo</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/img/logo.png" rel="icon">
+  <link href="../static/img/logo.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../static/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-lg-between">
+
+      <a href="{{url_for('welcome_user')}}" class="logo me-auto me-lg-0"><img src="../static/img/logo.png" alt="" class="img-fluid"></a>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{{ url_for('welcome_user') }}">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="{{ url_for('add_product') }}">Sell</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
+          <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li class="dropdown"><a href="#"><span>Electronics</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Mobiles and Tablets') }}">Mobiles and Tablets</a></li>
+                  <li><a href="{{ url_for('show_products', category='Computers and Laptops') }}">Computers and Laptops</a></li>
+                  <li><a href="{{ url_for('show_products', category='TVs, Audio and Video') }}">TVs, Audio and Video</a></li>
+                  <li><a href="{{ url_for('show_products', category='Camera and Accessories') }}">Camera and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='Video Games and Consoles') }}">Video Games and Consoles</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Home and Decor</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Furniture') }}">Furniture</a></li>
+                  <li><a href="{{ url_for('show_products', category='Appliances') }}">Appliances</a></li>
+                  <li><a href="{{ url_for('show_products', category='Home decor and Garden') }}">Home decor and Garden</a></li>
+                  <li><a href="{{ url_for('show_products', category='Tools And DIY') }}">Tools And DIY</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Babies and Kids</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Toys and Games') }}">Toys and Games</a></li>
+                  <li><a href="{{ url_for('show_products', category='Baby gear and Furniture') }}">Baby gear and Furniture</a></li>
+                  <li><a href="{{ url_for('show_products', category='Kids clothing and Accessories') }}">Kids clothing and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='ther Baby Essentials') }}">Other Baby Essentials</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Fashion and Beauty</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Clothing') }}">Clothing</a></li>
+                  <li><a href="{{ url_for('show_products', category='Shoes') }}">Shoes</a></li>
+                  <li><a href="{{ url_for('show_products', category='Watches, Jewelry and Accessories') }}">Watches, Jewelry and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='Health & Beauty Products') }}">Health & Beauty Products</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Vehicles</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Cars') }}">Cars</a></li>
+                  <li><a href="{{ url_for('show_products', category='Motorcycles and Scooters') }}">Motorcycles and Scooters</a></li>
+                  <li><a href="{{ url_for('show_products', category='Bicycles and Accessories') }}">Bicycles and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='Parts and Accessories') }}">Parts and Accessories</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Miscellaneous</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Books') }}">Books</a></li>
+                  <li><a href="{{ url_for('show_products', category='Sports and Outdoors') }}">Sports and Outdoors</a></li>
+                  <li><a href="{{ url_for('show_products', category='Camping and Hiking') }}">Camping and Hiking</a></li>
+                  <li><a href="{{ url_for('show_products', category='Musical Instruments') }}">Musical Instruments</a></li>
+                  <li><a href="{{ url_for('show_products', category='Others') }}">Others</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <!-- <li><a class="nav-link scrollto" href="#contact">Search</a></li> -->
+        <li>
+          <div class="input-group mx-3">
+            
+            <form method="POST" action="{{url_for('search_results')}}">
+            <div class="row g-0">
+            <div class="col-auto">
+            <input type="search" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2" style="font-size: 0.8rem;" name="search_query"></div>
+            <div class="col-auto"> <button class="btn btn-outline-secondary" type="submit" id="button-addon2" style="background-color: #fdc85e; font-size: 0.85rem;"><i class="bi bi-search"></i></button></div>
+          </div>  
+          </form>
+          </div>
+          
+        </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="{{ url_for('show_profile') }}" class="get-started-btn scrollto d-flex align-items-center"><i class="bi bi-person-circle bi-lg me-2" style="font-size: 1rem !important;"></i><span style="font-weight: 600; font-size: 1rem;"> Welcome User</span></a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center justify-content-center">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+        <div class="col-xl-6 col-lg-8">
+          <h1>Buy or Sell Used Products<span>.</span></h1>
+          <h2>Connecting buyers and sellers all over the country</h2>
+        </div>
+      </div>
+
+      <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <i class="ri-store-line"></i>
+            <h3><a href="#categories">Featured Categories</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <i class="ri-bar-chart-box-line"></i>
+            <h3><a href="#categories">Fresh Arrivals</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <i class="bi bi-person-circle"></i>
+            <h3><a href="{{url_for('show_profile')}}">User Profile</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4">
+            <div class="icon-box">
+              <i class="bi bi-chat-left-dots"></i>
+              <h3><a href="{{ url_for('select_chat') }}">Chat</a></h3>
+            </div>
+          </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <i class="bi bi-card-list"></i>
+            <h3><a href="{{ url_for('add_product') }}">Sell Product</a></h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="../static/img/about.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+            <h3>ABOUT US.</h3>
+            <p class="fst-italic">
+              OLX_Karo is a platform designed to make buying and selling used products easy and hassle-free. Our mission is to provide a convenient and secure marketplace for individuals and businesses to sell their unused items and find great deals on pre-loved items.
+            </p>
+            <ul>
+              <li><i class="ri-check-double-line"></i> We provide a user-friendly platform where sellers can list their products, and buyers can browse and purchase items from a variety of categories..</li>
+              <li><i class="ri-check-double-line"></i> We strive to ensure a safe and secure experience for our users by implementing measures to prevent fraud, scams, and other potential risks.</li>
+              <li><i class="ri-check-double-line"></i> Our platform also allows users to leave reviews and ratings for sellers, providing transparency and trust in the buying and selling process.</li>
+              <li><i class="ri-check-double-line"></i> By choosing to buy and sell on our platform, you are contributing to a more eco-friendly and sustainable future.</li>
+              <li><i class="ri-check-double-line"></i> One of the key features of our platform is our chat feature, which enables buyers and sellers to connect with each other and discuss the details of a transaction before making a purchase. This helps to build trust between buyers and sellers and ensures that both parties are happy with the transaction.</li>
+            </ul>
+            <p>Join the OLX_Karo community today and experience the convenience and benefits of buying and selling used products.</p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Services</h2>
+          <p>Check our Services</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-box-seam"></i></div>
+              <h4><a href="{{ url_for('add_product') }}">Sell your product</a></h4>
+              <p>List your unused items for sale on our user-friendly platform.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-globe"></i></div>
+              <h4><a href="#about">Nationwide Reach</a></h4>
+              <p>Enjoy a nationwide reach with potential buyers from all over the country.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-currency-dollar"></i></div>
+              <h4><a href="{{url_for('show_products',category='all_categories')}}">Great Deals</a></h4>
+              <p>Find great deals on pre-loved items from a variety of categories.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-heart-fill"></i></div>
+              <h4><a href="{{ url_for('show_profile') }}">Wishlist</a></h4>
+              <p>Save products you're interested in buying on your wishlist</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-chat-left-dots-fill"></i></div>
+              <h4><a href="{{url_for('select_chat')}}">Chat</a></h4>
+              <p>Chat feature to chat with potential buyers and sellers for hassle-free communication.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-tags"></i></div>
+              <h4><a href="#categories">Categories</a></h4>
+              <p>Choose from a wide variety of product categories and user based product suggestions.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="text-center">
+          <h3>"Need Help?"</h3>
+          <p> If you have any questions or concerns about using OLX_Karo, our support team is always here to help. Whether you need help connecting with a seller, want to report a listing, or just have a general question about how our platform works, feel free to get in touch with us. Click the "Contact Us" or "Need Help?" button to send us a message and we'll get back to you as soon as possible.</p>
+          <a class="cta-btn" href="#contact">Contact Us</a>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+
+<!-- ======= Portfolio Section ======= -->
+    <section id="categories" class="portfolio">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Products</h2>
+          <p>Check our Products</p>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter=".filter-web" class="filter-active">Featured Categories</li>
+              <li data-filter=".filter-card">Fresh Arrivals</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="../static/img/computer.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Computers and Laptops</h4>
+                <div class="portfolio-links">
+                  <a href="../static/img/computer.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Electronics"><i class="bx bx-plus"></i></a>
+                  <a href="{{ url_for('show_products', category='Computers and Laptops') }}" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="../static/img/homeanddecor.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Home Decor</h4>
+                <div class="portfolio-links">
+                  <a href="../static/img/homeanddecor.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Home and Decor"><i class="bx bx-plus"></i></a>
+                  <a href="{{ url_for('show_products', category='Home decor and Garden') }}" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="../static/img/Furniture.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Furnitures</h4>
+                <div class="portfolio-links">
+                  <a href="../static/img/Furniture.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Furnitures"><i class="bx bx-plus"></i></a>
+                  <a href="{{ url_for('show_products', category='Furniture') }}" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="../static/img/Fashion.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Fashion and Beauty</h4>
+                <div class="portfolio-links">
+                  <a href="../static/img/Fashion.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Fashion and Beauty"><i class="bx bx-plus"></i></a>
+                  <a href="{{ url_for('show_products', category='Health & Beauty Products') }}" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="../static/img/cycle.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Bikes and Cycles</h4>
+                <div class="portfolio-links">
+                  <a href="../static/img/cycle.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Bikes and Cycles"><i class="bx bx-plus"></i></a>
+                  <a href="{{ url_for('show_products', category='Computers and Laptops') }}" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="../static/img/Baby.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Toys and Games</h4>
+                <div class="portfolio-links">
+                  <a href="../static/img/Baby.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Babies and Kids"><i class="bx bx-plus"></i></a>
+                  <a href="{{ url_for('show_products', category='Toys and Games') }}" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="../static/img/cars.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Vehicles</h4>
+                <div class="portfolio-links">
+                  <a href="../static/img/cars.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
+                  <a href="{{ url_for('show_products', category='Cars') }}" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="../static/img/sport.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Sports and Outdoors</h4>
+                <div class="portfolio-links">
+                  <a href="../static/img/sport.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Sports and Outdoors"><i class="bx bx-plus"></i></a>
+                  <a href="{{ url_for('show_products', category='Sports and Outdoors') }}" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="../static/img/book.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Books</h4>
+                <div class="portfolio-links">
+                  <a href="../static/img/book.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                  <a href="{{ url_for('show_products', category='Books') }}" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {% for prod in newarr %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="data:image/png;base64,{{prod['image']}}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>{{prod['name']}}</h4>
+                <p style="color: rgb(102, 102, 102);">{{prod['category']}}</p>
+                <div class="portfolio-links">
+                  <a href="../static/img/cta-bg.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                  <a href="{{ url_for('prod_details', prodID=prod['s_no']) }}" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row no-gutters">
+          <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right" data-aos-delay="100"></div>
+          <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
+            <div class="content d-flex flex-column justify-content-center">
+              <h3>Our Impact</h3>
+              <p>
+                At OLX_Karo, we're proud to have facilitated countless transactions and helped connect buyers and sellers across the country. Here are some of our latest impact statistics:
+              </p>
+              <div class="row">
+                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                  <div class="count-box">
+                    <i class="bi bi-emoji-smile"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="{{user_count}}" data-purecounter-duration="2" class="purecounter"></span>
+                    <p><strong>Happy Users</strong> Our platform has helped thousands of customers find the items they need at affordable prices, while also providing a safe and secure platform to buy and sell used products.</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                  <div class="count-box">
+                    <i class="bi bi-journal-richtext"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="{{prod_count}}" data-purecounter-duration="2" class="purecounter"></span>
+                    <p><strong>Products Listed</strong> With thousands of pre-loved items listed on our platform, there's something for everyone on OLX_Karo.</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                  <div class="count-box">
+                    <i class="bi bi-list"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="{{category_count}}" data-purecounter-duration="4" class="purecounter"></span>
+                    <p><strong>Categories Listed</strong> From electronics to fashion, find it all on OLX_Karo.</p>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="zoom-in">
+        <h3 style="color: wheat; text-align: center; font-weight: 600; margin-bottom: 20px;">Testimonials</h3>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="../static/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                <h3>Saul Goodman</h3>
+                <h4>Ceo &amp; Founder</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="../static/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                <h3>Sara Wilsson</h3>
+                <h4>Designer</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="../static/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                <h3>Jena Karlis</h3>
+                <h4>Store Owner</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="../static/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                <h3>Matt Brandon</h3>
+                <h4>Freelancer</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="../static/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                <h3>John Larson</h3>
+                <h4>Entrepreneur</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Team</h2>
+          <p>Check our Team</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="100">
+              <div class="member-img">
+                <img src="../static/img/team/team1.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Khushal Srova</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="200">
+              <div class="member-img">
+                <img src="../static/img/team/team2.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Naman Nirwan</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="300">
+              <div class="member-img">
+                <img src="../static/img/team/team3.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Shankh Gupta</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="400">
+              <div class="member-img">
+                <img src="../static/img/team/team4.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Shaurya Divyam</h4>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>Contact Us</p>
+        </div>
+
+        <div>
+          <div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3">
+            <div id="map-9cd199b9cc5410cd3b1ad21cab2e54d3"></div><script>(function () {
+                var setting = {"height":339,"width":1290,"zoom":16,"queryString":"Indian Institute of Technology Delhi, IIT Delhi Main Road, IIT Campus, Hauz Khas, New Delhi, Delhi, India","place_id":"ChIJtV8FufYdDTkRwKMeayYLwYE","satellite":false,"centerCoord":[28.54498656015909,77.19251114999999],"cid":"0x81c10b266b1ea3c0","lang":"en","cityUrl":"/india/new-delhi","cityAnchorText":"Map of New Delhi, North Zone, India","id":"map-9cd199b9cc5410cd3b1ad21cab2e54d3","embed_id":"914923"};
+                var d = document;
+                var s = d.createElement('script');
+                s.src = 'https://1map.com/js/script-for-user.js?embed_id=914923';
+                s.async = true;
+                s.onload = function (e) {
+                  window.OneMap.initMap(setting)
+                };
+                var to = d.getElementsByTagName('script')[0];
+                to.parentNode.insertBefore(s, to);
+              })();</script><a href="https://1map.com/map-embed">1 Map</a></div>
+        </div>
+
+        <div class="row mt-5">
+
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>Indian Institute of technology Delhi, New Delhi</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>support.olxkaro@gmail.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+91 0001110001</p>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="col-lg-8 mt-5 mt-lg-0">
+
+            <form id="form_wbr8db__form" class="form_wbr8db__form" method="POST" action="https://sheetdb.io/api/v1/hq9zfysf0nqdk">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label for="form_wbr8db__form_input_0" class="form_wbr8db__form_label"> Name </label>
+                  <input type="text" name="data[Name]"class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <label for="form_wbr8db__form_input_1" class="form_wbr8db__form_label"> Email </label> 
+                  <input type="text" class="form-control" name="data[Email]" id="subject" placeholder="Subject" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="data[Subject]" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                  <textarea class="form-control" name="data[Message]" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="d-flex justify-content-center">
+              <button type ="submit" class="get-started-btn scrollto" style="color: black; font-weight: 800; margin-top: 30px;">Submit</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row justify-content-around">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <a href="index.html" class="logo"><img src="../static/img/logo.png" alt="" class="img-fluid mb-3"></a>
+              <p>
+                Indian Institute of Technology Delhi <br>
+                Hauz Khas, New Delhi, 110016<br><br>
+                <strong>Phone:</strong> +91 0001110001<br>
+                <strong>Email:</strong> support.olxkaro@gmail.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>OLX_Karo</span></strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../static/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../static/vendor/aos/aos.js"></script>
+  <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../static/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../static/js/main.js"></script>
+
+</body>
+
+</html>

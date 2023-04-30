@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OLX_Karo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <!-- <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+      rel="stylesheet"
+    /> -->
+    <!-- <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    /> -->
+
+     <!-- Favicons -->
+    <link href="../static/img/logo.png" rel="icon">
+    <link href="../static/img/logo.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../static/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="../static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../static/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="../static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="../static/css/style.css" rel="stylesheet">
+
+  </head>
+  <body style="background-color: #e2eaef">
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+      integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
+    ></script>  -->
+
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top" style="background-color: rgba(0, 0, 0, 0.8);">
+    <div class="container d-flex align-items-center justify-content-lg-between">
+
+      <a href="{{url_for('welcome_user')}}" class="logo me-auto me-lg-0"><img src="../static/img/logo.png" alt="" class="img-fluid"></a>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{{ url_for('welcome_user') }}">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="{{ url_for('add_product') }}">Sell</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
+          <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li class="dropdown"><a href="#"><span>Electronics</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Mobiles and Tablets') }}">Mobiles and Tablets</a></li>
+                  <li><a href="{{ url_for('show_products', category='Computers and Laptops') }}">Computers and Laptops</a></li>
+                  <li><a href="{{ url_for('show_products', category='TVs, Audio and Video') }}">TVs, Audio and Video</a></li>
+                  <li><a href="{{ url_for('show_products', category='Camera and Accessories') }}">Camera and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='Video Games and Consoles') }}">Video Games and Consoles</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Home and Decor</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Furniture') }}">Furniture</a></li>
+                  <li><a href="{{ url_for('show_products', category='Appliances') }}">Appliances</a></li>
+                  <li><a href="{{ url_for('show_products', category='Home decor and Garden') }}">Home decor and Garden</a></li>
+                  <li><a href="{{ url_for('show_products', category='Tools And DIY') }}">Tools And DIY</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Babies and Kids</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Toys and Games') }}">Toys and Games</a></li>
+                  <li><a href="{{ url_for('show_products', category='Baby gear and Furniture') }}">Baby gear and Furniture</a></li>
+                  <li><a href="{{ url_for('show_products', category='Kids clothing and Accessories') }}">Kids clothing and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='ther Baby Essentials') }}">Other Baby Essentials</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Fashion and Beauty</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Clothing') }}">Clothing</a></li>
+                  <li><a href="{{ url_for('show_products', category='Shoes') }}">Shoes</a></li>
+                  <li><a href="{{ url_for('show_products', category='Watches, Jewelry and Accessories') }}">Watches, Jewelry and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='Health & Beauty Products') }}">Health & Beauty Products</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Vehicles</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Cars') }}">Cars</a></li>
+                  <li><a href="{{ url_for('show_products', category='Motorcycles and Scooters') }}">Motorcycles and Scooters</a></li>
+                  <li><a href="{{ url_for('show_products', category='Bicycles and Accessories') }}">Bicycles and Accessories</a></li>
+                  <li><a href="{{ url_for('show_products', category='Parts and Accessories') }}">Parts and Accessories</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Miscellaneous</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url_for('show_products', category='Books') }}">Books</a></li>
+                  <li><a href="{{ url_for('show_products', category='Sports and Outdoors') }}">Sports and Outdoors</a></li>
+                  <li><a href="{{ url_for('show_products', category='Camping and Hiking') }}">Camping and Hiking</a></li>
+                  <li><a href="{{ url_for('show_products', category='Musical Instruments') }}">Musical Instruments</a></li>
+                  <li><a href="{{ url_for('show_products', category='Others') }}">Others</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <!-- <li><a class="nav-link scrollto" href="#contact">Search</a></li> -->
+        <li>
+          <div class="input-group mx-3">
+            
+            <form method="POST" action="{{url_for('search_results')}}">
+            <div class="row g-0">
+            <div class="col-auto">
+            <input type="search" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2" style="font-size: 0.8rem;" name="search_query"></div>
+            <div class="col-auto"> <button class="btn btn-outline-secondary" type="submit" id="button-addon2" style="background-color: #fdc85e; font-size: 0.85rem;"><i class="bi bi-search"></i></button></div>
+          </div>  
+          </form>
+          </div>
+        </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="{{ url_for('show_profile') }}" class="get-started-btn scrollto d-flex align-items-center"><i class="bi bi-person-circle bi-lg me-2" style="font-size: 1rem !important;"></i><span style="font-weight: 600; font-size: 1rem;"> Welcome User</span></a>
+
+    </div>
+  </header><!-- End Header -->
+
+
+  <!-- <div class="container-fluid">
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-8 align-items-start">
+            <div class="row ml-2">
+                <div id="carouselExampleIndicators" class="carousel slide">
+                    <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/../static/img/testimonials-bg.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/../static/img/testimonials-bg.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/../static/img/cta-bg.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
+              </div>
+            </div>
+            <div class="row my-4 mx-1 p-3" style="background-color: white; border-radius: 10px;">
+                <h3 style="color: rgb(27, 27, 27);">Description</h3>
+                <p style="font-size: 14px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, dicta cum necessitatibus officia laudantium eos modi voluptatibus impedit quaerat? Itaque, unde nam maiores similique incidunt aliquid dolorem voluptatibus fuga optio!Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, dicta cum necessitatibus officia laudantium eos modi voluptatibus impedit quaerat? Itaque, unde nam maiores similique incidunt aliquid dolorem voluptatibus fuga optio!Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, dicta cum necessitatibus officia laudantium eos modi voluptatibus impedit quaerat? Itaque, unde nam maiores similique incidunt aliquid dolorem voluptatibus fuga optio!Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, dicta cum necessitatibus officia laudantium eos modi voluptatibus impedit quaerat? Itaque, unde nam maiores similique incidunt aliquid dolorem voluptatibus fuga optio!</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row my-4 mx-1 pt-3 pb-0" style="background-color: white; border-radius: 10px;">
+                <h2 style="font-family: sans-serif; color: black;">$13.00</h2>
+                <div class="mt-1 mb-0 text-muted small">
+                    <span>100% cotton</span>
+                    <span class="text-primary"> • </span>
+                    <span>Light weight</span>
+                    <span class="text-primary"> • </span>
+                    <span>Best finish<br /></span>
+                  </div>
+                  <div class="mb-2 text-muted small">
+                    <span>Unique design</span>
+                    <span class="text-primary"> • </span>
+                    <span>For men</span>
+                    <span class="text-primary"> • </span>
+                    <span>Casual<br /></span>
+                  </div>
+                <p style="text-align: right; font-size: 10px;">5 days ago</p>
+            </div>
+            <div class="row my-4 mx-1 p-3" style="background-color: white; border-radius: 10px;">
+                <h2>Loid Forger</h2>
+                <p style="font-size: 12px;">21-Bakers Street, Westalis, Chicago, USA - 1909202</p>
+                <span><a href="#about" class="get-started-btn scrollto"><span style="color: black; font-family: sans-serif ;font-weight: 500;">Chat With Seller</span></a></span>
+            </div>
+        </div>
+    </div>
+  </div> -->
+
+  <div class="container-fluid">
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-8 align-items-start">
+            <div class="row ml-2">
+                <div id="carouselExampleIndicators" class="carousel slide">
+                    <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    </div>
+                    <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="data:image/jpeg;base64, {{ img_data_b64 }}" class="w-100 h-100" style="max-width: 1200px;max-height: 800px;">
+                    </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
+              </div>
+            </div>
+            <div class="row my-4 mx-1 p-3" style="background-color: #dfdfdf; border-radius: 10px;">
+                <h2>Product Description</h2>
+                <hr>
+                <h4 style="color: rgb(27, 27, 27);">Product name: {{data['name']}}</h4>
+                <p style="font-size: 14px;">{{data['description']}}</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row my-4 mx-1 p-3" style="background-color: #ffffff; border-radius: 10px;">
+                <h2 style="font-family: sans-serif; color: black;">Price: ₹{{data['price']}}</h2>
+
+            </div>
+            <div class="row my-4 mx-1 p-3" style="background-color: #ffffff; border-radius: 10px;">
+                <h2>Seller: {{ data['username']}}</h2>
+                <p style="font-size: 12px;"></p>
+                <span><a href="{{url_for('add_chat_contact', seller_id = data['username'])}}" class="get-started-btn scrollto"><span style="color: black; font-family: sans-serif ;font-weight: 500;">Chat With Seller</span></a></span>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- Vendor JS Files -->
+<script src="../static/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="../static/vendor/aos/aos.js"></script>
+<script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../static/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../static/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Template Main JS File -->
+<script src="../static/js/main.js"></script>
+
+  </body>
+  </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OLX_Karo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+ 
+<body>
+    <script type="text/javascript">
+        $(document).ready(function() {
+          var socket = io.connect("http://localhost:5000")
+          socket.on('connect', function() {
+            socket.send("User connected!");
+          });
+    
+          socket.on('message', function(data) {
+            $('#messages').append($('<p>').text(data));
+          });
+    
+          $('#sendBtn').on('click', function() {
+            socket.send($('#message').val());
+            $('#message').val('');
+          });
+        })
+      </script>
+    <div id="messages">
+
+    </div>
+    <input type="text" class="form-control" placeholder="username" id="username">
+    <input type="text" class="form-control" placeholder="message" id="message">
+    <button id="sendBtn"> send</button>
+    </body>
